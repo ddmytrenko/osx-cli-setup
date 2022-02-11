@@ -1,0 +1,84 @@
+export LC_ALL="en_GB.UTF-8"
+
+# plugins
+source <(antibody init)
+antibody bundle < ~/.antibodyrc
+autoload -U compinit && compinit
+#echo "[DONE] Antibody"
+
+# environment
+export ANDROID_SDK_ROOT="$HOME/Documents/development/tools/android/sdk"
+export JIRA_NAME="dmytro.dmytrenko"
+export JIRA_URL="https://jira.code.g2a.com"
+export PATH="$PATH:$ANDROID_SDK_ROOT/build-tools"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+
+# aliases
+alias brwup="brew update && brew upgrade && brew cleanup"
+alias cat="ccat"
+alias ls="ls -G"
+alias mc="mc -S dracula"
+alias vim="nvim"
+alias wkrk="ansiweather -a false -l Krakow,PL -s true"
+alias wltsk="ansiweather -a false -l Lutsk,UA -s true"
+alias wwaw="ansiweather -a false -l Warsaw,PL -s true"
+alias ytdl="youtube-dl"
+
+# git aliases
+alias gco="git checkout"
+alias псщ="git checkout"
+alias gcp="git commit -p"
+alias псз="git commit -p"
+alias gcu="git checkout -- ."
+alias gfo="git fetch -p origin"
+alias пащ="git fetch -p origin"
+alias ggc="git gc"
+alias gnb="git checkout -b"
+alias пти="git checkout -b"
+alias gpo="git pull origin"
+alias пзщ="git pull origin"
+alias gri="git rebase -i"
+alias пкш="git rebase -i"
+alias ешп="tig"
+alias мшь="vim"
+
+# history
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=99999
+SAVEHIST=99999
+
+# open_command simplified for OSX (used by ohmyzsh plugins)
+function open_command() {
+    open "$@" &>/dev/null
+}
+
+# zsh options
+setopt autocd autopushd		# quick dir navigation
+
+# setup sdmank env if needed
+function chpwd() {
+	if [ -f ".sdkmanrc" ]; then
+		sdk env
+	else
+		local dir=$(pwd)
+		while [ ! -z "$dir" ] && [ ! -f "$dir/.sdkmanrc" ]; do
+			dir="${dir%\/*}"
+		done
+		if [ -f "$dir/.sdkmanrc" ]; then
+			cp "$dir/.sdkmanrc" ./
+			sdk env
+			rm "$dir/.sdkmanrc"
+		fi
+	fi
+}
+
+# manually installed plugins
+# brew install autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# brew install thefuck
+eval $(thefuck --alias)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
