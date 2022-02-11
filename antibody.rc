@@ -1,0 +1,43 @@
+dracula/zsh
+igoradamenko/jira.plugin.zsh
+ohmyzsh/ohmyzsh path:plugins/dirhistory
+#ohmyzsh/ohmyzsh path:plugins/sdk
+ohmyzsh/ohmyzsh path:plugins/web-search
+supercrabtree/k
+unixorn/fzf-zsh-plugin
+wfxr/forgit
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting
+
+# plugins with custom sourcing order
+rupa/z
+changyuheng/fz
+
+## zsh-fuzzy-search-and-edit
+#mafredri/zsh-async
+#seletskiy/zsh-fuzzy-search-and-edit
+
+# manually installed cli software
+# ansiweather
+# autojump
+# bat
+# ccat
+# diff-so-fancy
+# fd
+# htop
+# instaloader (pip3)
+# jq
+# lf
+# midnight-commander
+# nnn
+# ranger
+# spike-telegram
+# the_silver_searcher
+# thefuck
+# tig
+# youtube-dl
+
+# tips & tricks
+# rm -rf $(antibody home) - "reset" antibody
